@@ -1,9 +1,7 @@
-resource "aci_rest" "fvTenant" {
-  dn         = "uni/tn-${var.name}"
-  class_name = "fvTenant"
+resource "aci_rest" "epIpAgingP" {
+  dn         = "uni/infra/ipAgingP-default"
+  class_name = "epIpAgingP"
   content = {
-    name      = var.name
-    nameAlias = var.alias
-    descr     = var.description
+    adminSt = var.admin_state == true ? "enabled" : "disabled"
   }
 }
