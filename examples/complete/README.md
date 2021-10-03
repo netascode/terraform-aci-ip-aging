@@ -13,7 +13,8 @@ Note that this example will create resources. Resources can be destroyed with `t
 
 ```hcl
 module "aci_ip_aging" {
-  source = "netascode/ip-aging/aci"
+  source  = "netascode/ip-aging/aci"
+  version = ">= 0.0.1"
 
   admin_state = true
 }
