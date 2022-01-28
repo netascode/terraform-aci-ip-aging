@@ -5,8 +5,8 @@ terraform {
     }
 
     aci = {
-      source  = "netascode/aci"
-      version = ">=0.2.0"
+      source  = "CiscoDevNet/aci"
+      version = ">=2.0.0"
     }
   }
 }
@@ -17,7 +17,7 @@ module "main" {
   admin_state = true
 }
 
-data "aci_rest" "epIpAgingP" {
+data "aci_rest_managed" "epIpAgingP" {
   dn = "uni/infra/ipAgingP-default"
 
   depends_on = [module.main]
@@ -28,7 +28,7 @@ resource "test_assertions" "epIpAgingP" {
 
   equal "adminSt" {
     description = "adminSt"
-    got         = data.aci_rest.epIpAgingP.content.adminSt
+    got         = data.aci_rest_managed.epIpAgingP.content.adminSt
     want        = "enabled"
   }
 }
